@@ -1,6 +1,4 @@
-FROM python:3.8
-
-
+FROM python:3.8-slim
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -19,7 +17,6 @@ RUN pip3 install -r requirements.txt
 # Copy project files
 COPY ./core /app/
 
-# Run the Django development server
-CMD ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
+
 
 
