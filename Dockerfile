@@ -1,4 +1,4 @@
-FROM python:3.8-slim
+FROM python:3.8-slim-buster
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -16,7 +16,6 @@ RUN pip3 install -r requirements.txt
 
 # Copy project files
 COPY ./core /app/
-
 
 
 
