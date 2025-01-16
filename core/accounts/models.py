@@ -60,6 +60,7 @@ class UserManager(BaseUserManager):
             raise ValueError(_("Superuser must have is_superuser=True."))
         return self.create_user(email, password, **extra_fields)
 
+    
 
 class User(AbstractBaseUser, PermissionsMixin):
     """
@@ -73,12 +74,15 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     # is_verified = models.BooleanField(default=False)
-    first_name = models.CharField(max_length=255)
+    
+    
+    USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
 
     created_date = models.DateTimeField(auto_now_add=True, help_text="The date and time when the user was created.")
     updated_date = models.DateTimeField(auto_now=True, help_text="The date and time when the user was last updated.")
 
+    objects = UserManager()
     def __str__(self):
         """
         String representation of the user object, typically the email address.
