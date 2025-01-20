@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from accounts.models import User
+from accounts.models import User,Profile
 
 
 class CustomUserAdmin(UserAdmin):
@@ -37,5 +37,5 @@ class CustomUserAdmin(UserAdmin):
             'fields': ('email', 'password1', 'password2', 'is_staff', 'is_superuser'),
         }),
     )
-    
+admin.site.register(Profile)
 admin.site.register(User,CustomUserAdmin)

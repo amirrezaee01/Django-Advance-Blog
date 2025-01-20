@@ -88,3 +88,15 @@ class User(AbstractBaseUser, PermissionsMixin):
         String representation of the user object, typically the email address.
         """
         return self.email
+    
+class Profile(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
+    image = models.ImageField(null=True,blank=True)
+    description = models.TextField()
+    created_date = models.DateTimeField(auto_now_add=True, help_text="The date and time when the user was created.")
+    updated_date = models.DateTimeField(auto_now=True, help_text="The date and time when the user was last updated.")
+
+    def __str__(self):
+        return self.user.email
