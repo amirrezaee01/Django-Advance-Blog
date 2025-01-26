@@ -1,14 +1,12 @@
-version: "3.9"
-
 services:
   backend:
     container_name: backend
     build: .
-    command: python manage.py runserver 0.0.0.0:8080 # Change this to 8080
+    command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - ./core:/app
     ports:
-      - "8080:8080" # Expose port 8080 to the host instead of 8000
+      - "9000:8000"
     environment:
       - SECRET_KEY=test
       - DEBUG=True
