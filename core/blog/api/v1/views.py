@@ -48,33 +48,3 @@ class PostDetail(APIView):
         post.delete()
         return Response({"Detail":"post has been successfully removed"})
     
-""""it is api with cbv"""
-# @api_view(["GET","POST"])
-# @permission_classes([IsAuthenticatedOrReadOnly])
-# def postlist(request):
-#     if request.method == "GET":
-#         posts = Post.objects.filter(status=True)
-#         serializer = PostSerializer(posts,many=True)
-#         return Response(serializer.data)
-#     elif request.method == "POST":
-#         serializer = PostSerializer(data=request.data)
-#         serializer.is_valid(raise_exception=True)
-#         serializer.save()
-#         return Response(serializer.data)
-
-#api for post detail with fbv  
-# @api_view(["GET","PUT","DELETE"])
-# @permission_classes([IsAuthenticatedOrReadOnly])
-# def postDetail(request,id):
-#     post = get_object_or_404(Post,pk=id,status=True)
-#     if request.method == "GET":
-#         serializer = PostSerializer(post)
-#         return Response(serializer.data)
-#     elif request.method == "PUT":
-#         serializer = PostSerializer(post,data=request.data)
-#         serializer.is_valid(raise_exception=True)
-#         serializer.save()
-#         return Response(serializer.data)
-#     elif request.method == "DELETE":
-#         post.delete()
-#         return Response({"Detail":"post has been successfully removed"})
