@@ -7,12 +7,13 @@ from rest_framework import viewsets
 from .serializers import PostSerializer,CategorySerializer
 from blog.models import Post,Category
 from django.shortcuts import get_object_or_404
+from .permissions import IsOwnerOrReadOnly
 
 
 #the same method with ViewSet in CBV
 class PostModelViewSet(viewsets.ModelViewSet):
 
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [IsAuthenticatedOrReadOnly,IsOwnerOrReadOnly]
     serializer_class = PostSerializer
     queryset = Post.objects.filter(status=True)
     
